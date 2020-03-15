@@ -1,4 +1,4 @@
-package com.adc.leetcode100.leetcode1_two_sum;
+package com.adc.leetcode0_99.leetcode1_two_sum;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.adc.leetcode100.leetcode3_longest_substring_without_repeating_characters;
+package com.adc.leetcode0_99.leetcode3_longest_substring_without_repeating_characters;
 
 import java.util.HashMap;
 import java.util.Map;

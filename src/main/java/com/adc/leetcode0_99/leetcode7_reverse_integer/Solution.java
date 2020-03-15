@@ -1,4 +1,4 @@
-package com.adc.leetcode100.leetcode7_reverse_integer;
+package com.adc.leetcode0_99.leetcode7_reverse_integer;
 
 public class Solution {
     public int reverse(int x) {
