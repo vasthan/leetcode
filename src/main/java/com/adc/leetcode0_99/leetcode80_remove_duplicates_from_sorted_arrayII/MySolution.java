@@ -14,6 +14,7 @@ import java.util.Arrays;
 public class MySolution {
 
     // 快慢指针
+    // 时间复杂度O(n)，空间复杂度O(1)
     public int removeDuplicates(int[] nums) {
         if (nums.length <= 2) {
             return nums.length;
@@ -28,9 +29,26 @@ public class MySolution {
         return slow + 1;
     }
 
+    // 问题扩展：删除重复元素，每个元素最多出现n次
+    public int removeDuplicatesN(int[] nums, int n) {
+        if (nums.length <= 2) {
+            return nums.length;
+        }
+        int slow = n - 1, fast = n;
+        for (; fast < nums.length; fast++) {
+            if (nums[fast] != nums[slow - n + 1]) {
+                slow++;
+                nums[slow] = nums[fast];
+            }
+        }
+        return slow + 1;
+    }
+
+
     public static void main(String[] args) {
         int[] nums = {0,0,1,1,1,1,2,3,3,4,5};
-        int length = new MySolution().removeDuplicates(nums);
+        // int length = new MySolution().removeDuplicates(nums);
+        int length = new MySolution().removeDuplicatesN(nums, 1);
         System.out.println(length);
         System.out.println(Arrays.toString(nums));
     }
