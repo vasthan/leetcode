@@ -1,4 +1,4 @@
-package com.adc._300_399._349_intersection_of_two_arrays;
+package com.adc._300_max._349_intersection_of_two_arrays;
 
 import java.util.HashSet;
 import java.util.Set;

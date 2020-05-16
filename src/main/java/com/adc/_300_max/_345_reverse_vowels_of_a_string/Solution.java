@@ -1,4 +1,4 @@
-package com.adc._300_399._345_reverse_vowels_of_a_string;
+package com.adc._300_max._345_reverse_vowels_of_a_string;
 
 import java.util.HashSet;
 import java.util.Set;

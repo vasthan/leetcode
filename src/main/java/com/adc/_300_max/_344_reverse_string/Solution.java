@@ -1,4 +1,4 @@
-package com.adc._300_399._344_reverse_string;
+package com.adc._300_max._344_reverse_string;
 
 /**
  * 344. 反转字符串
