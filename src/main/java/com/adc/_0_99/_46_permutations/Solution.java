@@ -1,8 +1,6 @@
 package com.adc._0_99._46_permutations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,9 +20,9 @@ public class Solution {
     }
 
 
-    private void generatePermutation(int[] nums, ArrayList<Integer> p) {
+    private void generatePermutation(int[] nums, List<Integer> p) {
         if (p.size() == nums.length) {
-            res.add(Arrays.asList(p.toArray(new Integer[p.size()])));
+            res.add(new ArrayList<>(p));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
@@ -36,11 +34,5 @@ public class Solution {
                 used[i] = false;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
-        List<List<Integer>> result = new Solution().permute(nums);
-        result.forEach(System.out::println);
     }
 }
