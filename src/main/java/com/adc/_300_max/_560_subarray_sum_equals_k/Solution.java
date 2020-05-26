@@ -20,8 +20,6 @@ class Solution {
         return count;
     }
 
-
-    // 方法二：暴力解法，双重循环
     public int subarraySum2(int[] nums, int k) {
         // pre[i] = pre[i - 1] + nums[i]
         // 计算[j, i]中和为k的子数组数量，0 <= j <= i
