@@ -1,0 +1,55 @@
+package com.adc._0_99._78_subsets;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
+ *
+ * 说明：解集不能包含重复的子集。
+ *
+ * 示例:
+ *
+ * 输入: nums = [1,2,3]
+ * 输出:
+ * [
+ *   [3],
+ *   [1],
+ *   [2],
+ *   [1,2,3],
+ *   [1,3],
+ *   [2,3],
+ *   [1,2],
+ *   []
+ * ]
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/subsets
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ */
+public class Solution {
+    private List<List<Integer>> res;
+    public List<List<Integer>> subsets(int[] nums) {
+        res = new ArrayList<>();
+        if (nums == null) {
+            return res;
+        }
+        dfs(nums, 0, new ArrayList<>());
+        return res;
+    }
+
+    private void dfs(int[] nums, int index, List<Integer> c) {
+        res.add(new ArrayList<>(c));
+        for (int i = index; i < nums.length; i++) {
+            c.add(nums[i]);
+            dfs(nums, i + 1, c);
+            c.remove(c.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        System.out.println(s.subsets(new int[]{1,2,3}));
+        System.out.println(s.subsets(new int[]{1,2,3,4}));
+    }
+}
