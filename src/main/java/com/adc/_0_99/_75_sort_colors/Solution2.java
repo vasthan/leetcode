@@ -2,39 +2,27 @@ package com.adc._0_99._75_sort_colors;
 
 import java.util.Arrays;
 
-/**
- * 使用三路快排的思想优化，只需要一趟遍历，非常优秀！
- * 时间复杂度O(n)，空间复杂度O(1)
- */
-public class Solution2 {
-
+// 计数排序，两趟遍历
+// 时间复杂度O(n)，空间复杂度O(k)，k表示元素的取值范围
+class Solution2 {
     public void sortColors(int[] nums) {
-        int zero = -1;          // [0, zero]区间保存0
-        int two = nums.length;  // [two, nums.length - 1]区间保存2
-
-        // [zero + 1, two - 1]区间保存1
-        int i = 0;
-        while (i < two) {
-            if (nums[i] == 0) {
-                zero++;
-                swap(nums, zero, i);
-                i++;
-            } else if (nums[i] == 2) {
-                two--;
-                swap(nums, i, two);
-            } else {
-                if (nums[i] != 1) {
-                    throw new IllegalArgumentException("不合法数字");
-                }
-                i++;
+        int[] count = new int[3];
+        for (int num : nums) {
+            if (num < 0 || num > 2) {
+                throw new IllegalArgumentException("不合法数字");
             }
+            count[num]++;
         }
-    }
-
-    private void swap(int[] nums, int a, int b) {
-        int tmp = nums[a];
-        nums[a] = nums[b];
-        nums[b] = tmp;
+        int index = 0;
+        for (int i = 0; i < count[0]; i++) {
+            nums[index++] = 0;
+        }
+        for (int i = 0; i < count[1]; i++) {
+            nums[index++] = 1;
+        }
+        for (int i = 0; i < count[2]; i++) {
+            nums[index++] = 2;
+        }
     }
 
     public static void main(String[] args) {
