@@ -3,23 +3,26 @@ package com.adc._0_99._80_remove_duplicates_from_sorted_arrayII;
 import java.util.Arrays;
 
 public class SolutionBest {
+    // 每个数字最多出现2次
     public int removeDuplicates(int[] nums) {
-        if (nums == null) throw new IllegalArgumentException("nums is null");
-        int i = 0;
-        for (int n : nums) {
-            if (i < 2 || n != nums[i - 2]) nums[i++] = n;
+        if (nums == null) return -1;
+        int k = 2;
+        for (int i = 2; i < nums.length; i++) {
+            if (nums[i] != nums[k - 2])
+                nums[k++] = nums[i];
         }
-        return i;
+        return k;
     }
 
-    // 去重，每个元素最多出现k次
-    public int removeDuplicates(int[] nums, int k) {
-        if (nums == null) throw new IllegalArgumentException("nums is null");
-        int i = 0;
-        for (int n : nums) {
-            if (i < k || n != nums[i - k]) nums[i++] = n;
+    // 每个数字最多出现n次
+    public int removeDuplicates(int[] nums, int n) {
+        if (nums == null) return -1;
+        int k = n;
+        for (int i = n; i < nums.length; i++) {
+            if (nums[i] != nums[k - n])
+                nums[k++] = nums[i];
         }
-        return i;
+        return k;
     }
 
     public static void main(String[] args) {
@@ -28,8 +31,5 @@ public class SolutionBest {
 
         System.out.println(new SolutionBest().removeDuplicates(nums));
         System.out.println(Arrays.toString(nums));
-
-        // System.out.println(new SolutionBest().removeDuplicates(nums, 4));
-        // System.out.println(Arrays.toString(nums));
     }
 }

@@ -37,5 +37,7 @@ public class Solution {
         int[] nums = new int[]{2, 7, 11, 15};
         int[] res = new Solution().twoSum(nums, 9);
         System.out.println(Arrays.toString(res));
+
+        System.out.println((byte)'a');
     }
 }
