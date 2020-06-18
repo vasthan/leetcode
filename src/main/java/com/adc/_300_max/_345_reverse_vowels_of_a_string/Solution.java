@@ -9,30 +9,26 @@ import java.util.Set;
  */
 public class Solution {
     public String reverseVowels(String s) {
-        if (s == null) {
-            return null;
-        }
-        // 这里要考虑大小写
-        char[] vowels = {'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'};
-        Set<Character> set = new HashSet<>();
-        for (char vowel : vowels) {
-            set.add(vowel);
-        }
-        char[] arr = s.toCharArray();
-        int l = 0, r = s.length() - 1;
-        while (l < r) {
-            if (!set.contains(arr[l])) {
-                l++;
-                continue;
+        if (s == null || s.length() <= 1) return s;
+        char[] chars = s.toCharArray();
+        int i = 0, j = chars.length - 1;
+
+        while (i < j) {
+            while (i < j && !isVowel(chars[i])) i++;
+            while (i < j && !isVowel(chars[j])) j--;
+            if (i < j) {
+                char tmp = chars[i];
+                chars[i] = chars[j];
+                chars[j] = tmp;
+                i++;
+                j--;
             }
-            if (!set.contains(arr[r])) {
-                r--;
-                continue;
-            }
-            char tmp = arr[l];
-            arr[l] = arr[r];
-            arr[r] = tmp;
         }
-        return new String(arr);
+        return new String(chars);
+    }
+
+    private boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+                c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
     }
 }
