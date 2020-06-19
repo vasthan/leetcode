@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 public class Solution2 {
 
-    // 使用优先队列，最小堆维护数组最大的前k个元素
+    // 使用优先队列，最小堆维护数组最大的前k个元素，复杂度是O(nlogk)，没有快排速度快
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         for (int num : nums) {
