@@ -23,6 +23,8 @@ class Solution {
             return head;
 
         // 寻找中点
+        // 这里fast初始化为head.next是有讲究的，可以试一下fast初始化为head，会发生什么事（栈溢出）
+        // 可以拿三个节点的链表调试一下，会发现当链表只有两个节点时，不会拆分为两个单节点链表，而是一个双节点链表，一个null
         ListNode slow = head, fast = head.next;
         while (fast != null && fast.next != null) {
             slow = slow.next;
@@ -39,13 +41,6 @@ class Solution {
         // 合并
         return merge(head, head2);
     }
-
-    // 自底向上归并
-    public ListNode sortListBottomUp(ListNode head) {
-
-        return null;
-    }
-
 
     private ListNode merge(ListNode a, ListNode b) {
         // 分别指向两个链表头节点
