@@ -1,45 +1,65 @@
 package com.adc._300_max._300_longest_increasing_subsequence;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-/*
-300. 最长上升子序列
-给定一个无序的整数数组，找到其中最长上升子序列的长度。
-
-示例:
-
-输入: [10,9,2,5,3,7,101,18]
-输出: 4
-解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
-说明:
-
-可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。
-你算法的时间复杂度应该为 O(n2) 。
-进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?
+/**
+ * 原题：https://leetcode-cn.com/problems/longest-increasing-subsequence/
+ * 给定一个整数数组，找到其中最长严格递增子序列的长度
+ *
+ * 解法一：暴力回溯，搜索所有递增子序列的组合
  */
 public class Solution1 {
-
-    // 时间复杂度O(n^2)
-    // dp = new int[nums.length]，dp[i]表示以nums[i]结尾的最长上升子序列的长度
+    int lisLength = 0;
+    List<Integer> lis = new ArrayList<>();
     public int lengthOfLIS(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums == null) {
             return 0;
         }
-        int n = nums.length;
-        int[] dp = new int[n];
-        Arrays.fill(dp, 1);
-
-        for (int i = 1; i < n; i++) {
-            for (int j = i - 1; j >= 0; j--) {
-                if (nums[i] > nums[j]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
-                }
-            }
+        for (int i = 0; i < nums.length; i++) {
+            List<Integer> seq = new ArrayList<>();
+            seq.add(nums[i]);
+            dfs(nums, i, seq);
         }
-        int res = dp[0];
-        for (int i = 1; i < dp.length; i++) {
-            res = Math.max(res, dp[i]);
-        }
-        return res;
+        return lisLength;
     }
+
+    /**
+     * 从index位置开始进行dfs，搜索递增子序列
+     */
+    private void dfs(int[] nums, int index, List<Integer> seq) {
+        if (index == nums.length) {
+            if (seq.size() > lisLength) {
+                lisLength = seq.size();
+                lis = new ArrayList<>(seq);
+            }
+            return;
+        }
+        if (nums[index] > seq.get(seq.size() - 1)) {
+            // 遇到一个更大的数字，加入到序列中，继续递归
+            seq.add(nums[index]);
+            dfs(nums, index + 1, seq);
+
+            // 回溯
+            seq.remove(seq.size() - 1);
+        }
+        // 不加入序列
+        dfs(nums, index + 1, seq);
+    }
+
+    public static void main(String[] args) {
+        Solution1 s = new Solution1();
+//        s.lengthOfLIS(new int[]{10,9,2,5,3,7,101,18});
+//        System.out.println(s.lisLength);
+//        System.out.println(s.lis);
+
+        s.lengthOfLIS(new int[]{0,1,0,3,2,3});
+        System.out.println(s.lisLength);
+        System.out.println(s.lis);
+
+//        s.lengthOfLIS(new int[]{7,7,7,7,7,7,7});
+//        System.out.println(s.lisLength);
+//        System.out.println(s.lis);
+    }
+
 }
