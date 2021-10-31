@@ -1,9 +1,16 @@
-package com.adc;
+package com.adc._300_max._500_keyboard_row;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class Test {
-
+/**
+ * 原题：https://leetcode-cn.com/problems/keyboard-row/
+ *
+ * 思路：集合/哈希表
+ */
+public class Solution {
     public String[] findWords(String[] words) {
         String[] rows = {"qwertyuiop", "asdfghjkl", "zxcvbnm"};
         Set<Character>[] sets = new HashSet[rows.length];
@@ -35,13 +42,5 @@ public class Test {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-//        String[] words = {"Hello","Alaska","Dad","Peace"};
-        String[] words = {"omk"};
-        String[] res = new Test().findWords(words);
-        System.out.println(Arrays.toString(res));
-
     }
 }
