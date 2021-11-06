@@ -4,6 +4,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 两个线程交叉打印奇偶数
+ */
 public class OddEvenPrinter {
     private static Lock lock = new ReentrantLock();
     // 奇数打印完了
